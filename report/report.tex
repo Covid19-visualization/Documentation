@@ -1,0 +1,218 @@
+\documentclass[10pt,conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+
+
+% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{verbatim}
+
+
+\graphicspath{{images/}} 
+
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+\begin{document}
+
+
+
+
+\title{EU CoVis-19: visual analysis of Covid-19 effects in Europe}
+
+
+\author{
+	\IEEEauthorblockN{
+		Valerio Coretti
+		\IEEEauthorblockA{
+		\textit{Engineering in Computer Science} \\
+		\textit{Sapienza University of Rome} \\
+		Rome, Italy \\
+		coretti.1635747@studenti.uniroma1.it}
+	}
+	\and
+	\IEEEauthorblockN{
+		Fabio Caputo
+		\IEEEauthorblockA{
+		\textit{Engineering in Computer Science} \\
+		\textit{Sapienza University of Rome} \\
+		Rome, Italy \\
+		caputo.1695402@studenti.uniroma1.it}
+	}
+	\and
+	\IEEEauthorblockN{
+		Weihao Peng
+		\IEEEauthorblockA{
+		\textit{Engineering in Computer Science} \\
+		\textit{Sapienza University of Rome} \\
+		Rome, Italy \\
+		peng.1713518@studenti.uniroma1.it}
+	}
+}
+
+\maketitle
+
+\begin{abstract}
+	We live in the era of big data. For each topic, we have a huge amount of data that we can analyze. 
+	Powerful tools have been created over the years to manage big data. In this document we will try to use these tools to make 
+	an in-depth analysis of one of the largest pandemics the world has ever suffered. We are talking about Covid-19. In the past 
+	two years of the pandemic, a vast amount of epidemiological data has been collected. We have created a platform for visualizing 
+	this data, using the latest available Visual Analytics techniques. We have come up with a solution that can help users better 
+	understand information about COVID-19 deaths, cases and vaccines with a focus for the European countries.
+	The repo containing all the material is accessible at the following link: \emph{https://github.com/Covid19-visualization}
+\end{abstract}
+\begin{IEEEkeywords}
+Visual Analytics, Covid-19, Vaccine
+\end{IEEEkeywords}
+
+\section{Introduction}
+
+\smallbreak
+
+\section{Related Work}
+
+\section{Dataset}
+Before we started implementing our system, we needed a lot of information about COVID-19 and therefore we took the  
+{\it Our World in Data} \cite{dataset}. The Dataset is very very huge (AS index greather than 6 milion), it contains the collected for all the world. 
+This dataset was built by collecting data from different sources:
+\begin{enumerate}
+	\item COVID-19 Data Repository by the Center for Systems Science and Engineering (CSSE) at Johns Hopkins University (JHU)
+	\item European Centre for Disease Prevention and Control
+	\item Government sources
+\end{enumerate}
+\bigskip
+Dataset is composed by a total o 65 columns, which are the features, and more than 125.000 rows. 
+
+\subsection{Preprocessing}
+The size is very large and for this reason we have decided to select the European countries, so the number of rows is about 40 thousand, and to select only a part of 
+the features, the ones related to vaccines, death and cases:
+\begin{itemize}
+		\item \emph{name:} Country name
+		\item \emph{continent:} Continent of the geographical location
+		\item \emph{date:} Date of observation
+		
+		\item \emph{population:} Population (latest available values).
+		\item \emph{population\_density:} Number of people divided by land area, measured in square kilometers, most recent year available
+		\item \emph{median\_age:} Median age of the population, UN projection for 2020
+		\item \emph{gdp\_per\_capita:} Gross domestic product at purchasing power parity (constant 2011 international dollars), most recent year available
+		\item \emph{cardiovasc\_death\_rate:} Death rate from cardiovascular disease in 2017 (annual number of deaths per 100,000 people)
+		\item \emph{diabetes\_prevalence:} Diabetes prevalence (\% of population aged 20 to 79) in 2017
+		\item \emph{female\_smokers:} Share of women who smoke, most recent year available
+		\item \emph{male\_smokers:} Share of men who smoke, most recent year available
+		\item \emph{life\_expectancy:} Life expectancy at birth in 2019
+		\item \emph{human\_development\_index:} A composite index measuring average achievement in three basic dimensions of human development a long and healthy life, knowledge and a decent standard of living. 
+	
+		\item \emph{total\_cases}: Total confirmed cases of COVID-19
+		\item \emph{new\_cases}: New confirmed cases of COVID-19
+		\item \emph{new\_cases\_smoothed}: New confirmed cases of COVID-19 (7-day smoothed)
+		\item \emph{total\_cases\_per\_million}: Total confirmed cases of COVID-19 per 1.000.000 people
+		\item \emph{new\_cases\_per\_million}: New confirmed cases of COVID-19 per 1,000,000 people
+		\item \emph{new\_cases\_smoothed\_per\_million}: New confirmed cases of COVID-19 (7-day smoothed) per 1,000,000 people
+	
+		\item \emph{total\_deaths:} Total deaths attributed to COVID-19
+		\item \emph{new\_deaths:} New deaths attributed to COVID-19
+		\item \emph{new\_deaths\_smoothed:} New deaths attributed to COVID-19 (7-day smoothed)
+		\item \emph{total\_deaths\_per\_million:} Total deaths attributed to COVID-19 per 1,000,000 people
+		\item \emph{new\_deaths\_per\_million:} New deaths attributed to COVID-19 per 1,000,000 people
+		\item \emph{new\_deaths\_smoothed\_per\_million:} New deaths attributed to COVID-19 (7-day smoothed) per 1,000,000 people
+
+		\item \emph{people\_vaccinated:} Total number of people who received at least one vaccine dose
+		\item \emph{people\_fully\_vaccinated:} Total number of people who received all doses prescribed by the vaccination protocol
+		\item \emph{new\_vaccinations:} New COVID-19 vaccination doses administered (only calculated for consecutive days)
+		\item \emph{new\_vaccinations\_smoothed:} New COVID-19 vaccination doses administered (7-day smoothed). For countries that don't report vaccination data on a daily basis, we assume that vaccination changed equally on a daily basis over any periods in which no data was reported. This produces a complete series of daily figures, which is then averaged over a rolling 7-day window
+\end{itemize}
+
+\subsection{Data management}
+Due to the fact that we have to manage a very huge amount of data, we have chosen to store them inside a non relational DB, making the accessibility easier.
+
+\subsection{Principal component analyses (PCA)}
+Dimensionality reduction, or dimension reduction, is the transformation of data from a high-dimensional space into a low-dimensional space so that the low-dimensional representation retains some meaningful properties of the original data, ideally close to its intrinsic dimension \cite{dimRed}.
+
+Specifically, for this task, we decided to use PCA (Principal component analysis), a linear technique for dimensionality reduction that performs a linear mapping of the data to a lower-dimensional space so that the variance of the data in the low-dimensional representation is maximized.
+Therefore, this method allows us to plot each multidimensional tuple on a bidimensional space, still maintaining all the underlying properties. 
+The algorithm is applied on all the attributes and the results are showed inside a scatterplot.
+
+\section{Technologies}
+Covid19 Visualizer is a platform and it is built as a proper web application with the following technologies:
+
+\subsection{NodeJS and MongoDB}
+We used NodeJS \cite{node} to built our Back-end, where we do all the computation and where we retrieve the data from the DB. To store the data we have chosen the widely used
+MongoDB \cite{mongo}, a non relational database that is very easy to use with Node.
+
+\subsection{D3.js}
+The D3.js framework \cite{d3} have been used for the development of the visualizations that compose the service.
+
+\subsection{React}
+
+
+\section{Visualizations}
+EU CoVis-19 is composed by a set of different visualizations. In this chapter we want to analyze each component individually to understand what it
+is showing and how it interacts with the others. As mentioned before, the strength of our platform compared to the existing ones is 
+the interaction between the various charts. In fact, each of them is connected to the others in order to make the user experience 
+simpler and more direct.
+There are three main views that we are using:
+\begin{itemize}
+	\item The first view shows data about the deaths (Fig. 1);
+	\item The second view shows data about the cases (Fig. 2);
+	\item The third view shows data about the vaccinations (Fig. 3);
+\end{itemize}
+
+\subsection{Navbar selection}
+Opening the platform the first data that are showed are the one related to the Europe. They are an aggregation of the data for all the european countries. 
+Then we hav a navbar where the user can select the views, the countries and also the time span. Furthermore, clicking the circle with 
+the europe flag we can reset the selection.
+ % Figure of navbar
+
+\subsection{Choropleth Map}
+
+\subsection{Line chart}
+A line chart is a type of chart which displays information as a series of data points called ’markers’ connected by straight 
+line segments \cite{line}.
+
+\subsection{Bar chart}
+A bar chart is a chart or graph that presents categorical data with rectangular bars with heights or lengths proportional 
+to the values that they represent. Therefore, it is used to show comparisons among discrete categories. One axis of the chart 
+shows the specific categories being compared, and the other axis represents a measured value \cite{barchart}.
+
+\subsection{PCA chart}
+A scatter plot is a type of plot or mathematical
+using Cartesian coordinates to display values for typically two variables for a set of data. If the points are coded (color/shape/size), 
+one additional variable can be displayed. The data are displayed as a collection of points, each having the value of one variable 
+determining the position on the horizontal axis and the value of the other variable determining the position on the vertical axis \cite{scatter}.
+
+\subsection{Radar chart}
+A radar chart is a graphical method of displaying multi- variate data in the form of a two-dimensional chart of three or more 
+quantitative variables represented on axes starting from the same point \cite{radar}.
+
+\subsection{Table chart}
+
+\section{Case of study}
+
+\section{Conclusion}
+
+\section{Future Work}
+
+
+
+\begin{thebibliography}{00}
+
+\bibitem{dataset} https://github.com/owid/covid-19-data
+\bibitem{dimRed} https://en.wikipedia.org/wiki/Dimensionality\_reduction
+
+\bibitem{javascript} https://www.javascript.com/
+\bibitem{node} https://nodejs.org/it/
+\bibitem{mongo} https://www.mongodb.com
+\bibitem{d3} https://d3js.org/
+\bibitem{map} https://en.wikipedia.org/wiki/Choropleth\_map
+\bibitem{barchart} https://en.wikipedia.org/wiki/Bar\_chart
+\bibitem{scatter} https://en.wikipedia.org/wiki/Scatter\_plot
+\bibitem{radar} https://en.wikipedia.org/wiki/Radar\_chart
+\bibitem{line} https://en.wikipedia.org/wiki/Line\_chart
+
+\end{thebibliography}
+
+
+\end{document}
