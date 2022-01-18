@@ -160,15 +160,29 @@ There are three main views that we are using:
 
 \subsection{Navbar selection}
 Opening the platform the first data that are showed are the one related to the Europe. They are an aggregation of the data for all the european countries. 
-Then we hav a navbar where the user can select the views, the countries and also the time span. Furthermore, clicking the circle with 
+Then we have a navbar where the user can select the views, the countries and also the time span. Furthermore, clicking the circle with 
 the europe flag we can reset the selection.
  % Figure of navbar
 
 \subsection{Choropleth Map}
 
 \subsection{Line chart}
-A line chart is a type of chart which displays information as a series of data points called ’markers’ connected by straight 
-line segments \cite{line}.
+A line chart is a type of chart that displays information as a series of data points called ’markers’ connected by straight 
+line segments \cite{line}.This kind of chart it’s very useful to represent temporal information about the displayed data,
+in our case vaccinations, deaths and cases among selected countries. Given that the information regarding Europe's data 
+overperform every single country we have placed a specific button to hide those data. The intrinsic power of this visualization it’s 
+that we can easily check which countries incides more on the overall data for every interval of time.
+In order to achieve a smoother visualization of the data, each marker refers to the median value of the last seven days.
+
+Interactions:
+\begin{itemize}
+	\item {\em On mouse over}: Shows a tooltip containing the visualized data for each country containing also Europe and also a circle in the selected point.
+\end{itemize}
+
+\begin{figure}
+    \centering{\includegraphics[width=1\linewidth]{img/line.png}
+	\caption{Line Chart} \label{Fig}}
+\end{figure}
 
 \subsection{Bar chart}
 A bar chart is a chart or graph that presents categorical data with rectangular bars with heights or lengths proportional 
