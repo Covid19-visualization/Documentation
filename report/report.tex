@@ -62,7 +62,7 @@
 	two years of the pandemic, a vast amount of epidemiological data has been collected. We have created a platform for visualizing 
 	this data, using the latest available Visual Analytics techniques. We have come up with a solution that can help users better 
 	understand information about COVID-19 deaths, cases and vaccines with a focus for the European countries.
-	The repo containing all the material is accessible at the following link: \emph{https://github.com/Covid19-visualization}
+	The repo containing all the material is accessible at the following link: \emph{https://github.com/EU-CoVis-19}
 \end{abstract}
 \begin{IEEEkeywords}
 Visual Analytics, Covid-19, Vaccine
@@ -76,7 +76,7 @@ Visual Analytics, Covid-19, Vaccine
 
 \section{Dataset}
 Before we started implementing our system, we needed a lot of information about COVID-19 and therefore we took the  
-{\it Our World in Data} \cite{dataset}. The Dataset is very very huge (AS index greather than 6 milion), it contains the collected for all the world. 
+{\it Our World in Data} \cite{dataset}. The Dataset is very huge (AS index greather than 6 milion), it contains the collected data for all the world. 
 This dataset was built by collecting data from different sources:
 \begin{enumerate}
 	\item COVID-19 Data Repository by the Center for Systems Science and Engineering (CSSE) at Johns Hopkins University (JHU)
@@ -87,8 +87,11 @@ This dataset was built by collecting data from different sources:
 Dataset is composed by a total o 65 columns, which are the features, and more than 125.000 rows. 
 
 \subsection{Preprocessing}
-The size is very large and for this reason we have decided to select the European countries, so the number of rows is about 40 thousand, and to select only a part of 
-the features, the ones related to vaccines, death and cases:
+The size is very large and for this reason we have decided to select only the European countries. Furthermore analysing the data with some python scripts we see that there was European countries with very few data and for this reason we have also decided to discard the following nations:
+{\em ['Guernsey', 'Jersey', 'Vatican', 'Andorra', 'Faeroe Islands', 'Gibraltar', 'Isle of Man', 'Kosovo', 'Liechtenstein', 'Monaco', 'San Marino', 'North Macedonia']}. 
+So the number of rows now is about 40 thousand. 
+
+Finally we select only a part of the features, the ones related to vaccines, death and cases:
 \begin{itemize}
 		\item \emph{name:} Country name
 		\item \emph{continent:} Continent of the geographical location
@@ -104,29 +107,25 @@ the features, the ones related to vaccines, death and cases:
 		\item \emph{male\_smokers:} Share of men who smoke, most recent year available
 		\item \emph{life\_expectancy:} Life expectancy at birth in 2019
 		\item \emph{human\_development\_index:} A composite index measuring average achievement in three basic dimensions of human development a long and healthy life, knowledge and a decent standard of living. 
-	
+		\item \emph{stringency\_index}: Government Response Stringency Index: composite measure based on 9 response indicators including school closures, workplace closures, and travel bans, rescaled to a value from 0 to 100 (100 = strictest response)
 		\item \emph{total\_cases}: Total confirmed cases of COVID-19
 		\item \emph{new\_cases}: New confirmed cases of COVID-19
 		\item \emph{new\_cases\_smoothed}: New confirmed cases of COVID-19 (7-day smoothed)
-		\item \emph{total\_cases\_per\_million}: Total confirmed cases of COVID-19 per 1.000.000 people
-		\item \emph{new\_cases\_per\_million}: New confirmed cases of COVID-19 per 1,000,000 people
-		\item \emph{new\_cases\_smoothed\_per\_million}: New confirmed cases of COVID-19 (7-day smoothed) per 1,000,000 people
 	
 		\item \emph{total\_deaths:} Total deaths attributed to COVID-19
 		\item \emph{new\_deaths:} New deaths attributed to COVID-19
 		\item \emph{new\_deaths\_smoothed:} New deaths attributed to COVID-19 (7-day smoothed)
-		\item \emph{total\_deaths\_per\_million:} Total deaths attributed to COVID-19 per 1,000,000 people
-		\item \emph{new\_deaths\_per\_million:} New deaths attributed to COVID-19 per 1,000,000 people
-		\item \emph{new\_deaths\_smoothed\_per\_million:} New deaths attributed to COVID-19 (7-day smoothed) per 1,000,000 people
 
 		\item \emph{people\_vaccinated:} Total number of people who received at least one vaccine dose
 		\item \emph{people\_fully\_vaccinated:} Total number of people who received all doses prescribed by the vaccination protocol
 		\item \emph{new\_vaccinations:} New COVID-19 vaccination doses administered (only calculated for consecutive days)
 		\item \emph{new\_vaccinations\_smoothed:} New COVID-19 vaccination doses administered (7-day smoothed). For countries that don't report vaccination data on a daily basis, we assume that vaccination changed equally on a daily basis over any periods in which no data was reported. This produces a complete series of daily figures, which is then averaged over a rolling 7-day window
-\end{itemize}
+		\item \emph{total\_boosters:} Total number of COVID-19 vaccination booster doses administered (doses administered beyond the number prescribed by the vaccination protocol)
+
+	\end{itemize}
 
 \subsection{Data management}
-Due to the fact that we have to manage a very huge amount of data, we have chosen to store them inside a non relational DB, making the accessibility easier.
+Due to the fact that we have to manage a very huge amount of data, we have chosen to store them inside a non relational DataBase, making the accessibility easier.
 
 \subsection{Principal component analyses (PCA)}
 Dimensionality reduction, or dimension reduction, is the transformation of data from a high-dimensional space into a low-dimensional space so that the low-dimensional representation retains some meaningful properties of the original data, ideally close to its intrinsic dimension \cite{dimRed}.
@@ -147,8 +146,7 @@ The D3.js framework \cite{d3} have been used for the development of the visualiz
 
 \subsection{React}
 
-
-\section{Visualizations}
+\section{Visualizations and Interactions}
 EU CoVis-19 is composed by a set of different visualizations. In this chapter we want to analyze each component individually to understand what it
 is showing and how it interacts with the others. As mentioned before, the strength of our platform compared to the existing ones is 
 the interaction between the various charts. In fact, each of them is connected to the others in order to make the user experience 
@@ -177,17 +175,100 @@ A bar chart is a chart or graph that presents categorical data with rectangular 
 to the values that they represent. Therefore, it is used to show comparisons among discrete categories. One axis of the chart 
 shows the specific categories being compared, and the other axis represents a measured value \cite{barchart}.
 
+In our platform we used a {\em stacked bar chart} with the aims to compare different values and different countries at the same time. 
+It shows the following data:
+\begin{itemize}
+	\item {\em Cases view}: It shows the percentage of positives over population in comparison with the percentage of deaths over population and with the stringency index. The purpose of this plot is to have a clear idea of how the stringency index of a nations influences the cases and the deaths.
+	\item {\em Deaths view}: It shows the percentage of positives over population in comparison with the percentage of deaths over population and with the percentage of deaths over positives. The purpose of this plot is to have a focus on the deaths with respect the cases.
+	\item {\em Vaccinations view}: It shows the percentages of vaccinated with one, two and three doses of vaccine.
+\end{itemize}
+
+Note that the data showed are related to the date selected as the end of the interval of time, so they are data of one day. Obviously this date can be changed.
+
+Interactions:
+\begin{itemize}
+	\item {\em On mouse over}: It shows a tooltip with the data showed.
+	\item {\em On Click}: It focus the countries selected. This event has effect also in all the other visualizations that will focus the selected country.
+\end{itemize}
+
+\begin{figure}
+    \centering{\includegraphics[width=1\linewidth]{img/bar.png}
+	\caption{Bar Chart} \label{Fig}}
+\end{figure}
+
 \subsection{PCA chart}
 A scatter plot is a type of plot or mathematical
 using Cartesian coordinates to display values for typically two variables for a set of data. If the points are coded (color/shape/size), 
 one additional variable can be displayed. The data are displayed as a collection of points, each having the value of one variable 
 determining the position on the horizontal axis and the value of the other variable determining the position on the vertical axis \cite{scatter}.
 
-\subsection{Radar chart}
-A radar chart is a graphical method of displaying multi- variate data in the form of a two-dimensional chart of three or more 
-quantitative variables represented on axes starting from the same point \cite{radar}.
+In EU CoVis-19 PCA chart shows the two principal components (2D visualization) of the data for each selected country. This chart is very useful because showing all the data for a country it makes possible to do comparison between 
+countries and understand well that many nations have provided very few data, and as we have known for some time now, this is a factor that must be taken into account when comparing two or more countries about the covid pandemic.
+
+PCA is also integrated as analytics, indeed it changes based on the countries selected.
+
+Based on the views, the data taken in considerations is different:
+\begin{itemize}
+	\item {\em Cases and Deaths view}: ["new cases", "new cases smoothed", "total deaths", "new deaths", "new deaths smoothed", "stringency index"]
+	\item {\em Vaccinations view}: ["new vaccinations smoothed", "people fully vaccinated", "people vaccinated", "total boosters"]
+\end{itemize}
+
+\begin{figure}
+    \centering{\includegraphics[width=0.7\linewidth]{img/pca.png} 
+	\caption{PCA Chart} \label{Fig}}
+\end{figure}
+
+\subsection{Parallel Coordinates chart}
+Parallel plot or parallel coordinates plot allows to compare the feature of several individual observations (series) on a set of numeric variables. Each vertical bar represents a variable and often has its own scale. (The units can even be different). Values are then plotted as series of lines connected across each axis. \cite{paral}.
+
+In our platform we used a {\em parallel coordinates chart} with the aims to compare different values of different countries at the same time. 
+It shows the following data:
+\begin{itemize}
+	\item {\em Cases view}: ['Country', 'Population', 'Population density', 'Smokers', 'Cardiovasc death rate', 'Diabetes prevalence', 'Median Age']. 
+	\item {\em Deaths and Vaccines views}: ['Country', 'Population', 'Population density', 'Life Expectancy', 'GDP pro capita', 'Human Development Index', 'Median Age']. 
+\end{itemize}
+
+In all three views we show the basic values that describe a nation, and which can be useful to better understand the pandemic numbers: Population, population density and median age. In addition, in the Cases views we wanted to give greater focus to factors (Smokers, Cardiovasc death rate and Diabetes prevalence) that could affect the respiratory tract and therefore cause a possible infection.
+
+In Vaccines and Deaths views, on the other hand, we wanted to give greater relevance to three factors (Life Expectancy, Human Development Index and GDP per capita) which could be more easily attributable to causes of death or could highlight problems such as not being able to afford suitable treatments.
+
+These factors also allow us to make a comparison based on the wealth of a particular nation.
+
+\begin{figure}
+    \centering{\includegraphics[width=0.7\linewidth]{img/paral.png} 
+	\caption{Parallel Coordinates Chart} \label{Fig}}
+\end{figure}
+
 
 \subsection{Table chart}
+We have decided to use the table chart as a big legend for the current view. Indeed in the table are showed the names of the selected countries each of which with a color, that is the same color the nations have in all the other visualizations. With this choices we want simplify the views to the user and to make uniform the visualizations.
+The table shows also the data presented in the parallel coordinates chart. The table is also interactive, so it has the ability to change the other visualizations.
+Interactions:
+\begin{itemize}
+	\item {\em On Click}: It focus the countries selected. This event has effect also in all the other visualizations that will focus the selected country.
+\end{itemize}
+
+\begin{center}
+    \includegraphics[width=1\linewidth]{img/table.png} 
+\end{center}
+
+\section{Analytics}
+
+\begin{figure*}[!t]
+	\centering{\includegraphics[width=1\linewidth]{img/fig1.png}
+	\caption{Cases view} \label{Fig1}}
+\end{figure*}
+	
+\begin{figure*}[!t]
+	\centering{\includegraphics[width=1\linewidth]{img/fig2.png}
+	\caption{Deaths view} \label{Fig2}}
+\end{figure*}
+
+\begin{figure*}[!t]
+	\centering{\includegraphics[width=1\linewidth]{img/fig3.png}
+	\caption{Vaccines view} \label{Fig3}}
+\end{figure*}
+
 
 \section{Case of study}
 
@@ -209,10 +290,8 @@ quantitative variables represented on axes starting from the same point \cite{ra
 \bibitem{map} https://en.wikipedia.org/wiki/Choropleth\_map
 \bibitem{barchart} https://en.wikipedia.org/wiki/Bar\_chart
 \bibitem{scatter} https://en.wikipedia.org/wiki/Scatter\_plot
-\bibitem{radar} https://en.wikipedia.org/wiki/Radar\_chart
+\bibitem{paral} https://www.data-to-viz.com/graph/parallel.html
 \bibitem{line} https://en.wikipedia.org/wiki/Line\_chart
 
 \end{thebibliography}
-
-
 \end{document}

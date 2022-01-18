@@ -1,7 +1,7 @@
 # Fdb version 3
-["pdflatex"] 1638818058 "/Users/valeriocoretti/Desktop/va_project/Documentation/report/report.tex" "/Users/valeriocoretti/Desktop/va_project/Documentation/report/report.pdf" "report" 1638818101
-  "/Users/valeriocoretti/Desktop/va_project/Documentation/report/report.aux" 1638818059 2730 e90a8f93989428bc989fdcf4e07dfe63 ""
-  "/Users/valeriocoretti/Desktop/va_project/Documentation/report/report.tex" 1638818099 11094 c48a9c4e7a276c5a4bbe988d57968a2f ""
+["pdflatex"] 1642523184 "/Users/valeriocoretti/Desktop/va_project/Documentation/report/report.tex" "/Users/valeriocoretti/Desktop/va_project/Documentation/report/report.pdf" "report" 1642523187
+  "/Users/valeriocoretti/Desktop/va_project/Documentation/report/report.aux" 1642523186 3683 6a826737677f56a0ab2a8e946dba8ff6 ""
+  "/Users/valeriocoretti/Desktop/va_project/Documentation/report/report.tex" 1642523180 16567 7d496dbd2c229786dfc302077519f45f ""
   "/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2020/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2020/texmf-dist/fonts/tfm/adobe/times/ptmb7t.tfm" 1136768653 2172 fd0c924230362ff848a33632ed45dc23 ""
@@ -62,11 +62,18 @@
   "/usr/local/texlive/2020/texmf-var/web2c/pdftex/pdflatex.fmt" 1616677485 2432454 05dd4f8270ddaf966f6d7e3718a4b0e6 ""
   "/usr/local/texlive/2020/texmf.cnf" 1586288231 577 d60164b4589a341208aff7a667fbbdcb ""
   "IEEEtran.cls" 1638789363 281957 5b2e4fa15b0f7eabb840ebf67df4c0f7 ""
-  "report.aux" 1638818059 2730 e90a8f93989428bc989fdcf4e07dfe63 "pdflatex"
-  "report.tex" 1638818099 11094 c48a9c4e7a276c5a4bbe988d57968a2f ""
+  "img/bar.png" 1642518410 41823 99dce6a6788774b78c4261ba845eb205 ""
+  "img/fig1.png" 1642518264 908911 2b7fb0697e5ea540b8e08be44ce2aa9f ""
+  "img/fig2.png" 1642518248 884502 b9ad39fe1e802f4f4bfa870fe4682c19 ""
+  "img/fig3.png" 1642518280 936112 2da5412969fbdab534b16c2f9a86afef ""
+  "img/paral.png" 1642517938 92644 75561817be76f3832aa836c8faf7abaa ""
+  "img/pca.png" 1642518613 46099 8c40f014d23785169c2736b8f29c89e5 ""
+  "img/table.png" 1642518590 55822 3de155a735c7817969299b43ff9f5239 ""
+  "report.aux" 1642523186 3683 6a826737677f56a0ab2a8e946dba8ff6 "pdflatex"
+  "report.tex" 1642523180 16567 7d496dbd2c229786dfc302077519f45f ""
   (generated)
-  "/Users/valeriocoretti/Desktop/va_project/Documentation/report/report.log"
   "report.aux"
   "/Users/valeriocoretti/Desktop/va_project/Documentation/report/report.pdf"
-  "report.pdf"
   "report.log"
+  "/Users/valeriocoretti/Desktop/va_project/Documentation/report/report.log"
+  "report.pdf"
