@@ -138,6 +138,7 @@ The algorithm is applied on all the attributes and the results are showed inside
 Covid19 Visualizer is a platform and it is built as a proper web application with the following technologies:
 
 \subsection{NodeJS and MongoDB}
+NodeJS is an asynchronous event-driven JavaScript runtime, designed to build scalable network applications.
 We used NodeJS \cite{node} to built our Back-end, where we do all the computation and where we retrieve the data from the DB. To store the data we have chosen the widely used
 MongoDB \cite{mongo}, a non relational database that is very easy to use with Node.
 
@@ -145,7 +146,8 @@ MongoDB \cite{mongo}, a non relational database that is very easy to use with No
 The D3.js framework \cite{d3} have been used for the development of the visualizations that compose the service.
 
 \subsection{ReactJS}
-ReactJS is an open-source JavaScript library that allows developers to build user interfaces through a component-based approach; it uses Virtual DOM with JSX to create efficient web applications that update components only when necessary.
+ReactJS is an open-source JavaScript library that allows developers to build user interfaces through a component-based approach; it uses Virtual DOM with JSX to create efficient web applications that update components only when necessary \cite{react}.
+
 The idea of using reusable, independent and integrable UI plus compatibility with d3.js was fundamental in our choice;
 furthermore, ReactJS's hooks suites perfectly with the concept of an interactive and dynamic ecosystem, allowing the developer to manage logic states between components smoothly.
 
@@ -163,9 +165,8 @@ There are three main views that we are using:
 \end{itemize}
 
 \subsection{Navbar selection}
-Opening the platform the first data that are showed are the one related to the Europe. They are an aggregation of the data for all the european countries. 
-Then we have a navbar where the user can select the views, the countries and also the time span. Furthermore, clicking the circle with 
-the europe flag we can reset the selection.
+Opening the platform the first data that are shown are the ones related to Europe. They are an aggregation of the data for all the European countries.
+On the top-right side of the navbar, the user can select among vaccination, cases and deaths views and also the period time for the analysis. On the top-left side instead, we find a country selector by name and a button containing the European flag, this can be used to reset the selected countries showing only Europe data and eventually restore the decision. Selected countries will be displayed on the left panel, where the user can easily deselect by clicking on the related flag button.
  % Figure of navbar
 
 \subsection{Choropleth Map}
@@ -315,6 +316,7 @@ Our tool can be applicable to other real-world applications, by changing the dat
 
 \bibitem{javascript} https://www.javascript.com/
 \bibitem{node} https://nodejs.org/it/
+\bibitem{react} https://reactnative.dev/
 \bibitem{mongo} https://www.mongodb.com
 \bibitem{d3} https://d3js.org/
 \bibitem{map} https://en.wikipedia.org/wiki/Choropleth\_map
