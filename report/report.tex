@@ -144,7 +144,11 @@ MongoDB \cite{mongo}, a non relational database that is very easy to use with No
 \subsection{D3.js}
 The D3.js framework \cite{d3} have been used for the development of the visualizations that compose the service.
 
-\subsection{React}
+\subsection{ReactJS}
+ReactJS is an open-source JavaScript library that allows developers to build user interfaces through a component-based approach; it uses Virtual DOM with JSX to create efficient web applications that update components only when necessary.
+The idea of using reusable, independent and integrable UI plus compatibility with d3.js was fundamental in our choice;
+furthermore, ReactJS's hooks suites perfectly with the concept of an interactive and dynamic ecosystem, allowing the developer to manage logic states between components smoothly.
+
 
 \section{Visualizations and Interactions}
 EU CoVis-19 is composed by a set of different visualizations. In this chapter we want to analyze each component individually to understand what it
@@ -160,15 +164,29 @@ There are three main views that we are using:
 
 \subsection{Navbar selection}
 Opening the platform the first data that are showed are the one related to the Europe. They are an aggregation of the data for all the european countries. 
-Then we hav a navbar where the user can select the views, the countries and also the time span. Furthermore, clicking the circle with 
+Then we have a navbar where the user can select the views, the countries and also the time span. Furthermore, clicking the circle with 
 the europe flag we can reset the selection.
  % Figure of navbar
 
 \subsection{Choropleth Map}
 
 \subsection{Line chart}
-A line chart is a type of chart which displays information as a series of data points called ’markers’ connected by straight 
-line segments \cite{line}.
+A line chart is a type of chart that displays information as a series of data points called ’markers’ connected by straight 
+line segments \cite{line}.This kind of chart it’s very useful to represent temporal information about the displayed data,
+in our case vaccinations, deaths and cases among selected countries. Given that the information regarding Europe's data 
+overperforms every single country, we have placed a specific button to hide those data. The intrinsic power of this visualization it’s 
+that we can easily check which countries affect more on the overall data for every interval of time.
+In order to achieve a smoother visualization of the data, each marker refers to the median value of the last seven days.
+
+Interactions:
+\begin{itemize}
+	\item {\em On mouse over}: Shows a tooltip containing the visualized data for each country containing also Europe and also a circle in the selected point.
+\end{itemize}
+
+\begin{figure}
+    \centering{\includegraphics[width=1\linewidth]{img/line.png}
+	\caption{Line Chart} \label{Fig}}
+\end{figure}
 
 \subsection{Bar chart}
 A bar chart is a chart or graph that presents categorical data with rectangular bars with heights or lengths proportional 
