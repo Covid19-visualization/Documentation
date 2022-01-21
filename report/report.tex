@@ -72,7 +72,49 @@ Visual Analytics, Covid-19, Vaccine
 
 \smallbreak
 
-\section{Related Work}
+\section{Related Works}
+
+\subsection{COVID-19 Dashboards}
+Due to the COVID-19 pandemic, many viewers and dashboards have been developed in the past year. Some of them \cite{vis1, vis2, vis3} 
+viewed literature related to COVID-19 research and others \cite{vis4} viewed the economic impact of COVID-19. 
+However, most of them \cite{vis5} focused on actual COVID-19 cases. World-class viewers include, dashboard from the World Health 
+Organization (WHO) Coronavirus Disease 2019 (COVID-19) \cite{vis6}, COVID-19 dashboard from the Center for Systems Science and Engineering 
+(CSSE) at Johns Hopkins University (JHU) \cite{vis7},and COVID-19 dashboard of the European Center for Disease Prevention and Control \cite{vis8}.
+
+What these dashboards have in common is that they all show the data of cases and deaths related to the covid, but most of them are only 
+concerned with showing the data for what it is, in other words they perform only information visualization.
+The total number of confirmed cases and deaths in different countries (or regions / sovereignties) are usually represented by a {\em bubble map}. 
+In a bubble map, the total number of confirmed cases for each country is indicated by the radius of the bubble that represents the country. 
+While the severity of COVID-19 in many countries can be accounted for by the size of the radius of the bubbles these countries represent, 
+many bubbles overlap. The overlapping and / or containment of the bubbles makes it difficult to visualize the severity of the disease 
+in countries in dense regions.
+So a better choice, which is the one made in our project, is to represent these data through a {\em colorpleth map}, which colors the 
+map with lighter or darker shades based on the severity of the situation under analysis.
+
+Another very useful platform to find out about world covid data is the one from which we downloaded the dataset that is used in 
+EU CoVis-19: Our World in Data \cite{vis9}. This platform has resulted in a more successful attempt of visual analytics than the other platforms. 
+In fact, on this site we can start some computations by making comparisons, or use barcharts with timehistory which are very useful 
+when it comes to temporal data such as covid data. It also provide some interactions, such as tooltips on mouse over. 
+
+In any case, the main problem that all the platforms mentioned have in common is that they all have a multi-page structure, so you 
+can only interact with one view at a time, and therefore it is more difficult to make comparisons on different aspects. Furthermore, 
+this structure involves the non-interactivity of the visualizations which is instead a very important component to facilitate the 
+understanding of the data and to have better comparisons between the various countries.
+
+\subsection{EU CoVis-19}
+Once these platforms have been analyzed, what we have tried to do in our work is to start from these problems we have just encountered 
+and try to solve them, also adding views that could give a clear idea of the data being analyzed (PCA). EU CoVis-19 is a platform 
+designed to make comparisons between nations clearer not only by showing data relating to cases and deaths but also to other factors 
+such as average age, population, per capita income, etc., which could influence assessments in these cases. In addition, the tool is 
+{\em single page}, which makes viewing easier and greatly increases the ability to make graphs interactive. {\em Comparisons} and {\em interactions} are 
+the strong point of the project.
+
+What have we done more? We have added a {\em PCA chart} which is fundamental since it gives a clear image of the data available for 
+each nation, which as we know is a factor to be taken into account when doing this type of analysis, as we will show in the case of study 
+in fact, there may be countries that provide little data and therefore may be less reliable.
+
+In Table 1 we will show a resume of what we has described before to have a clear picture of the position of our work with respect the already existent.
+
 
 \section{Dataset}
 Before we started implementing our system, we needed a lot of information about COVID-19 and therefore we took the  
@@ -185,7 +227,7 @@ Interactions:
 
 \begin{figure}
     \centering{\includegraphics[width=1\linewidth]{img/line.png}
-	\caption{Line Chart} \label{Fig}}
+	\caption{Line Chart} \label{Fig4}}
 \end{figure}
 
 \subsection{Bar chart}
@@ -211,7 +253,7 @@ Interactions:
 
 \begin{figure}
     \centering{\includegraphics[width=1\linewidth]{img/bar.png}
-	\caption{Bar Chart} \label{Fig}}
+	\caption{Bar Chart} \label{Fig5}}
 \end{figure}
 
 \subsection{PCA chart}
@@ -233,7 +275,7 @@ Based on the views, the data taken in considerations is different:
 
 \begin{figure}
     \centering{\includegraphics[width=0.7\linewidth]{img/pca.png} 
-	\caption{PCA Chart} \label{Fig}}
+	\caption{PCA Chart} \label{Fig6}}
 \end{figure}
 
 \subsection{Parallel Coordinates chart}
@@ -254,7 +296,7 @@ These factors also allow us to make a comparison based on the wealth of a partic
 
 \begin{figure}
     \centering{\includegraphics[width=0.7\linewidth]{img/paral.png} 
-	\caption{Parallel Coordinates Chart} \label{Fig}}
+	\caption{Parallel Coordinates Chart} \label{Fig7}}
 \end{figure}
 
 
@@ -322,6 +364,15 @@ Our tool can be applicable to other real-world applications, by changing the dat
 \bibitem{scatter} https://en.wikipedia.org/wiki/Scatter\_plot
 \bibitem{paral} https://www.data-to-viz.com/graph/parallel.html
 \bibitem{line} https://en.wikipedia.org/wiki/Line\_chart
+\bibitem{vis1} P. Le Bras, et al., “Visualising COVID-19 research,” 2020, CoRR abs/2005.06380
+\bibitem{vis2} J. Tu, M. Verhagen, B. Cochran, J. Pustejovsky, “Exploration and discovery of the COVID-19 literature through semantic visualization,” 2020, CoRR abs/2007.01800
+\bibitem{vis3} F. Wolinski, “Visualization of diseases at risk in the COVID-19 literature,” 2020, CoRR abs/2005.00848
+\bibitem{vis4} F. Zuo, et al., “An interactive data visualization and analytics tool to evaluate mobility and sociability trends during COVID-19,” in ACM KDD Workship on UrbComp 2020, pp. 5:1-5:5
+\bibitem{vis5} S. Zhang, Y. Cai, J. Li, “Visualization of COVID-19 spread based on spread and extinction indexes,” Sci. China Inf. Sci. 63(6), 2020, pp. 164102:1-164102:3
+\bibitem{vis6} WorldHealthOrganization(WHO),WHOcoronavirusdisease(COVID- 19) dashboard. https://covid19.who.int/
+\bibitem{vis7} (CSSE) at Johns Hopkins University (JHU) https://coronavirus.jhu.edu/map.html
+\bibitem{vis8} European Center for Disease Prevention and Control https://www.ecdc.europa.eu/en/covid-19
+\bibitem{vis9} Our World in Data, Coronavirus Pandemic (COVID-19): https://ourworldindata.org/coronavirus 
 
 \end{thebibliography}
 \end{document}
