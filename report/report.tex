@@ -169,7 +169,19 @@ the europe flag we can reset the selection.
  % Figure of navbar
 
 \subsection{Choropleth Map}
+A chropleth map is a type of thematic map in which a set of pre-defined areas, the countries in our case of study, is colored or patterned in proportion to a statistical variable that represents an aggregate summary of a geographic characteristic whithin each area \cite{map}. It is a simple view that allows us to visualize how the pandemic goes in Europe through the time. 
 
+In our visualization we use three parameters: cases(blue), deaths(red) and vaccinations(green). We use differences in shading to represents the total number of the parameter. The darker is the shading, the total number is high. There is also a legend below the map with the color scale where we can easily check the number associated with the color.
+
+Interactions:
+\begin{itemize}
+	\item {\em On Click}: It will select the country so the other charts will show the data related to the selected country. The selected countries will be displayed on the left panel with their country flag, clicking on the country again will remove it from the selected countries.
+\end{itemize}
+
+\begin{figure}
+    \centering{\includegraphics[width=1\linewidth]{img/map.png}
+	\caption{Chropleth Map} \label{Fig}}
+\end{figure}
 \subsection{Line chart}
 A line chart is a type of chart that displays information as a series of data points called ’markers’ connected by straight 
 line segments \cite{line}.This kind of chart it’s very useful to represent temporal information about the displayed data,
@@ -310,6 +322,7 @@ Interactions:
 \bibitem{scatter} https://en.wikipedia.org/wiki/Scatter\_plot
 \bibitem{paral} https://www.data-to-viz.com/graph/parallel.html
 \bibitem{line} https://en.wikipedia.org/wiki/Line\_chart
+\bibitem{map} https://en.wikipedia.org/wiki/Choropleth\_map
 
 \end{thebibliography}
 \end{document}
