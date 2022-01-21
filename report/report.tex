@@ -180,6 +180,7 @@ The algorithm is applied on all the attributes and the results are showed inside
 Covid19 Visualizer is a platform and it is built as a proper web application with the following technologies:
 
 \subsection{NodeJS and MongoDB}
+NodeJS is an asynchronous event-driven JavaScript runtime, designed to build scalable network applications.
 We used NodeJS \cite{node} to built our Back-end, where we do all the computation and where we retrieve the data from the DB. To store the data we have chosen the widely used
 MongoDB \cite{mongo}, a non relational database that is very easy to use with Node.
 
@@ -187,7 +188,8 @@ MongoDB \cite{mongo}, a non relational database that is very easy to use with No
 The D3.js framework \cite{d3} have been used for the development of the visualizations that compose the service.
 
 \subsection{ReactJS}
-ReactJS is an open-source JavaScript library that allows developers to build user interfaces through a component-based approach; it uses Virtual DOM with JSX to create efficient web applications that update components only when necessary.
+ReactJS is an open-source JavaScript library that allows developers to build user interfaces through a component-based approach; it uses Virtual DOM with JSX to create efficient web applications that update components only when necessary \cite{react}.
+
 The idea of using reusable, independent and integrable UI plus compatibility with d3.js was fundamental in our choice;
 furthermore, ReactJS's hooks suites perfectly with the concept of an interactive and dynamic ecosystem, allowing the developer to manage logic states between components smoothly.
 
@@ -205,13 +207,24 @@ There are three main views that we are using:
 \end{itemize}
 
 \subsection{Navbar selection}
-Opening the platform the first data that are showed are the one related to the Europe. They are an aggregation of the data for all the european countries. 
-Then we have a navbar where the user can select the views, the countries and also the time span. Furthermore, clicking the circle with 
-the europe flag we can reset the selection.
+Opening the platform the first data that are shown are the ones related to Europe. They are an aggregation of the data for all the European countries.
+On the top-right side of the navbar, the user can select among vaccination, cases and deaths views and also the period time for the analysis. On the top-left side instead, we find a country selector by name and a button containing the European flag, this can be used to reset the selected countries showing only Europe data and eventually restore the decision. Selected countries will be displayed on the left panel, where the user can easily deselect by clicking on the related flag button.
  % Figure of navbar
 
 \subsection{Choropleth Map}
+A chropleth map is a type of thematic map in which a set of pre-defined areas, the countries in our case of study, is colored or patterned in proportion to a statistical variable that represents an aggregate summary of a geographic characteristic whithin each area \cite{map}. It is a simple view that allows us to visualize how the pandemic goes in Europe through the time. 
 
+In our visualization we use three parameters: cases(blue), deaths(red) and vaccinations(green). We use differences in shading to represents the total number of the parameter. The darker is the shading, the total number is high. There is also a legend below the map with the color scale where we can easily check the number associated with the color.
+
+Interactions:
+\begin{itemize}
+	\item {\em On Click}: It will select the country so the other charts will show the data related to the selected country. The selected countries will be displayed on the left panel with their country flag, clicking on the country again will remove it from the selected countries.
+\end{itemize}
+
+\begin{figure}
+    \centering{\includegraphics[width=1\linewidth]{img/map.png}
+	\caption{Chropleth Map} \label{Fig}}
+\end{figure}
 \subsection{Line chart}
 A line chart is a type of chart that displays information as a series of data points called ’markers’ connected by straight 
 line segments \cite{line}.This kind of chart it’s very useful to represent temporal information about the displayed data,
@@ -357,6 +370,7 @@ Our tool can be applicable to other real-world applications, by changing the dat
 
 \bibitem{javascript} https://www.javascript.com/
 \bibitem{node} https://nodejs.org/it/
+\bibitem{react} https://reactnative.dev/
 \bibitem{mongo} https://www.mongodb.com
 \bibitem{d3} https://d3js.org/
 \bibitem{map} https://en.wikipedia.org/wiki/Choropleth\_map
@@ -364,6 +378,7 @@ Our tool can be applicable to other real-world applications, by changing the dat
 \bibitem{scatter} https://en.wikipedia.org/wiki/Scatter\_plot
 \bibitem{paral} https://www.data-to-viz.com/graph/parallel.html
 \bibitem{line} https://en.wikipedia.org/wiki/Line\_chart
+<<<<<<< HEAD
 \bibitem{vis1} P. Le Bras, et al., “Visualising COVID-19 research,” 2020, CoRR abs/2005.06380
 \bibitem{vis2} J. Tu, M. Verhagen, B. Cochran, J. Pustejovsky, “Exploration and discovery of the COVID-19 literature through semantic visualization,” 2020, CoRR abs/2007.01800
 \bibitem{vis3} F. Wolinski, “Visualization of diseases at risk in the COVID-19 literature,” 2020, CoRR abs/2005.00848
@@ -373,6 +388,9 @@ Our tool can be applicable to other real-world applications, by changing the dat
 \bibitem{vis7} (CSSE) at Johns Hopkins University (JHU) https://coronavirus.jhu.edu/map.html
 \bibitem{vis8} European Center for Disease Prevention and Control https://www.ecdc.europa.eu/en/covid-19
 \bibitem{vis9} Our World in Data, Coronavirus Pandemic (COVID-19): https://ourworldindata.org/coronavirus 
+=======
+\bibitem{map} https://en.wikipedia.org/wiki/Choropleth\_map
+>>>>>>> 7c2665ce1d59e95156faff0ace8d5a477d6b89d5
 
 \end{thebibliography}
 \end{document}
