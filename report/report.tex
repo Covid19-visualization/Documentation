@@ -138,6 +138,7 @@ The algorithm is applied on all the attributes and the results are showed inside
 Covid19 Visualizer is a platform and it is built as a proper web application with the following technologies:
 
 \subsection{NodeJS and MongoDB}
+NodeJS is an asynchronous event-driven JavaScript runtime, designed to build scalable network applications.
 We used NodeJS \cite{node} to built our Back-end, where we do all the computation and where we retrieve the data from the DB. To store the data we have chosen the widely used
 MongoDB \cite{mongo}, a non relational database that is very easy to use with Node.
 
@@ -145,7 +146,8 @@ MongoDB \cite{mongo}, a non relational database that is very easy to use with No
 The D3.js framework \cite{d3} have been used for the development of the visualizations that compose the service.
 
 \subsection{ReactJS}
-ReactJS is an open-source JavaScript library that allows developers to build user interfaces through a component-based approach; it uses Virtual DOM with JSX to create efficient web applications that update components only when necessary.
+ReactJS is an open-source JavaScript library that allows developers to build user interfaces through a component-based approach; it uses Virtual DOM with JSX to create efficient web applications that update components only when necessary \cite{react}.
+
 The idea of using reusable, independent and integrable UI plus compatibility with d3.js was fundamental in our choice;
 furthermore, ReactJS's hooks suites perfectly with the concept of an interactive and dynamic ecosystem, allowing the developer to manage logic states between components smoothly.
 
@@ -163,9 +165,8 @@ There are three main views that we are using:
 \end{itemize}
 
 \subsection{Navbar selection}
-Opening the platform the first data that are showed are the one related to the Europe. They are an aggregation of the data for all the european countries. 
-Then we have a navbar where the user can select the views, the countries and also the time span. Furthermore, clicking the circle with 
-the europe flag we can reset the selection.
+Opening the platform the first data that are shown are the ones related to Europe. They are an aggregation of the data for all the European countries.
+On the top-right side of the navbar, the user can select among vaccination, cases and deaths views and also the period time for the analysis. On the top-left side instead, we find a country selector by name and a button containing the European flag, this can be used to reset the selected countries showing only Europe data and eventually restore the decision. Selected countries will be displayed on the left panel, where the user can easily deselect by clicking on the related flag button.
  % Figure of navbar
 
 \subsection{Choropleth Map}
@@ -283,6 +284,18 @@ Interactions:
 \end{center}
 
 \section{Analytics}
+In our platform we will develop the following analytics:
+\subsection{Simple: Comparisons, Aggregations and Operations} 
+EU CoVis-19 has been designed and built to make the comparison between data from different European countries as simple as possible. All the data that are shown when one or more countries is selected from the map (or from the navbar) are the result of a computation that aggregates all the data of the selection and shows them in the various views.
+So the aggregations are based on countries selected and interval of time (Date) and they are computed at the selection (Not precomputed). This means also that there are a very high number of possible combination of selections that a user could compute. 
+
+About {\em Parallel Coordinates} and {\em TableChart} they simple aggregation, while in the {\em LineChart} we have an aggregation plus a summation of the data because to show the trend during the interval of time select we have to sum the data of every day. Furthermore, all the percentages shown in the {\em BarChart} are the result of a computation, and they are computed at the selection and not predefined.
+
+{\em Europe data}, shown at the beginning or when the Europe button is clicked, are computed at the selection, they are the sum of all other countries present in the dataset.
+
+\subsection{Complex: PCA}
+In this project we have decided not to use Principal Component analysis only as a dimensionality reduction of the dataset, and to show all the data, but also in this case we have tried to make sense of the platform by making the data shown by PCA useful for making comparisons. As already mentioned above, PCA is applied to different data based on the views chosen. This choice helps us to understand how much data we have of each country, because looking at the visualization we realize that some countries provide much more data than others (At least from the sources from which the dataset collects data). This can be a useful yardstick for not reaching hasty conclusions on the data of some countries. PCA is an analytics because the computation is done at each selection and is not precomputed. It is an expensive computation made up of several steps, which is why for us it is a complex analytics.
+
 
 \begin{figure*}[!t]
 	\centering{\includegraphics[width=1\linewidth]{img/fig1.png}
@@ -296,16 +309,16 @@ Interactions:
 
 \begin{figure*}[!t]
 	\centering{\includegraphics[width=1\linewidth]{img/fig3.png}
-	\caption{Vaccines view} \label{Fig3}}
+	\caption{Vaccinations view} \label{Fig3}}
 \end{figure*}
 
 
 \section{Case of study}
 
-\section{Conclusion}
+\section{Conclusion and Future Work}
+Over the past year, there has been work to visualize and analyze different aspects of big data related to COVID-19. However, most existing viewers focus on visualizing temporal and / or spatial trends, case numbers and mortality, but none take into account all the other possible factors that can affect a nation's pandemic picture. Plus it is very difficult for viewers to make comparisons across multiple views since almost all of them are multi-page and not one-page structured. In this project, we focus on the already existing factors of the various countries and make the comparison of the data as efficient as possible. Our key contributions include the design and development of a big data visualization and visual analysis tool for epidemiological data of COVID-19. By incorporating PCAs as analytics we also provide a tool that helps to ideally understand how different country data is and how much data is being provided. We give users the flexibility to make as many comparisons as they want. The results of the visualizations can help researchers, politicians, but also ordinary people to gain a better understanding of COVID-19 and thus enable them to fight the disease.
 
-\section{Future Work}
-
+Our tool can be applicable to other real-world applications, by changing the data in the dataset, having such a broad view of an issue can help combat it. As a work in progress and in the future, we explore the possibility of incorporating other tools into the project, with particular reference to machine learning techniques that can make predictions on trends or help to better understand the data in possession.
 
 
 \begin{thebibliography}{00}
@@ -315,6 +328,7 @@ Interactions:
 
 \bibitem{javascript} https://www.javascript.com/
 \bibitem{node} https://nodejs.org/it/
+\bibitem{react} https://reactnative.dev/
 \bibitem{mongo} https://www.mongodb.com
 \bibitem{d3} https://d3js.org/
 \bibitem{map} https://en.wikipedia.org/wiki/Choropleth\_map
