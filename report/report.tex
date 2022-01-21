@@ -28,7 +28,7 @@
 	\IEEEauthorblockN{
 		Valerio Coretti
 		\IEEEauthorblockA{
-		\textit{Engineering in Computer Science} \\
+		\textit{Engineering in Computer Science} \\ 
 		\textit{Sapienza University of Rome} \\
 		Rome, Italy \\
 		coretti.1635747@studenti.uniroma1.it}
@@ -79,7 +79,7 @@ Due to the COVID-19 pandemic, many viewers and dashboards have been developed in
 viewed literature related to COVID-19 research and others \cite{vis4} viewed the economic impact of COVID-19. 
 However, most of them \cite{vis5} focused on actual COVID-19 cases. World-class viewers include, dashboard from the World Health 
 Organization (WHO) Coronavirus Disease 2019 (COVID-19) \cite{vis6}, COVID-19 dashboard from the Center for Systems Science and Engineering 
-(CSSE) at Johns Hopkins University (JHU) \cite{vis7},and COVID-19 dashboard of the European Center for Disease Prevention and Control \cite{vis8}.
+(CSSE) at Johns Hopkins University (JHU) \cite{vis7},and COVID-19 dashboard of the European Center for Disease Prevention and Control (ECDC) \cite{vis8}.
 
 What these dashboards have in common is that they all show the data of cases and deaths related to the covid, but most of them are only 
 concerned with showing the data for what it is, in other words they perform only information visualization.
@@ -113,8 +113,12 @@ What have we done more? We have added a {\em PCA chart} which is fundamental sin
 each nation, which as we know is a factor to be taken into account when doing this type of analysis, as we will show in the case of study 
 in fact, there may be countries that provide little data and therefore may be less reliable.
 
-In Table 1 we will show a resume of what we has described before to have a clear picture of the position of our work with respect the already existent.
+In the following table we resumes what we has described before to have a clear picture of the position of our work with respect the already existent.
 
+\begin{figure}
+    \centering{\includegraphics[width=1\linewidth]{img/table2.png}
+	\caption{Comparison table} \label{Table}}
+\end{figure}
 
 \section{Dataset}
 Before we started implementing our system, we needed a lot of information about COVID-19 and therefore we took the  
@@ -201,9 +205,9 @@ the interaction between the various charts. In fact, each of them is connected t
 simpler and more direct.
 There are three main views that we are using:
 \begin{itemize}
-	\item The first view shows data about the deaths (Fig. 1);
-	\item The second view shows data about the cases (Fig. 2);
-	\item The third view shows data about the vaccinations (Fig. 3);
+	\item The first view shows data about the deaths (Fig. 8);
+	\item The second view shows data about the cases (Fig. 9);
+	\item The third view shows data about the vaccinations (Fig. 10);
 \end{itemize}
 
 \subsection{Navbar selection}
@@ -225,6 +229,7 @@ Interactions:
     \centering{\includegraphics[width=1\linewidth]{img/map.png}
 	\caption{Chropleth Map} \label{Fig}}
 \end{figure}
+
 \subsection{Line chart}
 A line chart is a type of chart that displays information as a series of data points called ’markers’ connected by straight 
 line segments \cite{line}.This kind of chart it’s very useful to represent temporal information about the displayed data,
@@ -321,9 +326,10 @@ Interactions:
 	\item {\em On Click}: It focus the countries selected. This event has effect also in all the other visualizations that will focus the selected country.
 \end{itemize}
 
-\begin{center}
-    \includegraphics[width=1\linewidth]{img/table.png} 
-\end{center}
+\begin{figure}
+    \centering{\includegraphics[width=0.7\linewidth]{img/table.png} 
+	\caption{Table Chart} \label{Fig12}}
+\end{figure}
 
 \section{Analytics}
 In our platform we will develop the following analytics:
@@ -378,8 +384,7 @@ Our tool can be applicable to other real-world applications, by changing the dat
 \bibitem{scatter} https://en.wikipedia.org/wiki/Scatter\_plot
 \bibitem{paral} https://www.data-to-viz.com/graph/parallel.html
 \bibitem{line} https://en.wikipedia.org/wiki/Line\_chart
-<<<<<<< HEAD
-\bibitem{vis1} P. Le Bras, et al., “Visualising COVID-19 research,” 2020, CoRR abs/2005.06380
+\bibitem{vis1} P. Le Bras, et al., Visualising COVID-19 research 2020, CoRR abs/2005.06380
 \bibitem{vis2} J. Tu, M. Verhagen, B. Cochran, J. Pustejovsky, “Exploration and discovery of the COVID-19 literature through semantic visualization,” 2020, CoRR abs/2007.01800
 \bibitem{vis3} F. Wolinski, “Visualization of diseases at risk in the COVID-19 literature,” 2020, CoRR abs/2005.00848
 \bibitem{vis4} F. Zuo, et al., “An interactive data visualization and analytics tool to evaluate mobility and sociability trends during COVID-19,” in ACM KDD Workship on UrbComp 2020, pp. 5:1-5:5
@@ -388,9 +393,7 @@ Our tool can be applicable to other real-world applications, by changing the dat
 \bibitem{vis7} (CSSE) at Johns Hopkins University (JHU) https://coronavirus.jhu.edu/map.html
 \bibitem{vis8} European Center for Disease Prevention and Control https://www.ecdc.europa.eu/en/covid-19
 \bibitem{vis9} Our World in Data, Coronavirus Pandemic (COVID-19): https://ourworldindata.org/coronavirus 
-=======
-\bibitem{map} https://en.wikipedia.org/wiki/Choropleth\_map
->>>>>>> 7c2665ce1d59e95156faff0ace8d5a477d6b89d5
+\bibitem{map} https://en.wikipedia.org/wiki/Choroplethmap
 
 \end{thebibliography}
 \end{document}
