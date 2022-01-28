@@ -351,23 +351,22 @@ About {\em Parallel Coordinates} and {\em TableChart} they simple aggregation, w
 In this project, we have decided not to use Principal Component analysis only as a dimensionality reduction of the dataset, and to show all the data, but also in this case we have tried to make sense of the platform by making the data shown by PCA useful for making comparisons. As already mentioned above, PCA is applied to different data based on the views chosen. This choice helps us to understand how much data we have of each country, because looking at the visualization we realize that some countries provide much more data than others (At least from the sources from which the dataset collects data). This can be a useful yardstick for not reaching hasty conclusions on the data of some countries. PCA is an analytics because the computation is done at each selection and is not precomputed. It is an expensive computation made up of several steps, which is why for us it is a complex analytics.
 
 
-\begin{figure*}[!t]
- \centering{\includegraphics[width=1\linewidth]{img/fig1.png}
- \caption{Cases view} \label{Fig1}}
-\end{figure*}
- 
-\begin{figure*}[!t]
- \centering{\includegraphics[width=1\linewidth]{img/fig2.png}
- \caption{Deaths view} \label{Fig2}}
-\end{figure*}
-
-\begin{figure*}[!t]
- \centering{\includegraphics[width=1\linewidth]{img/fig3.png}
- \caption{Vaccinations view} \label{Fig3}}
-\end{figure*}
-
-
 \section{Case of study}
+In the following paragraph we will present a case study that will try to enclose all the main features and potential of EU CoVis-19. In this last year we have heard conflicting opinions on the pandemic, on the data of the infections, and we have seen above all comparisons between nations to highlight whether the actions of their own governments were right or not. The real problem is that in most cases, when making analyzes, certain factors that are excluded and wrong are not taken into account. For this reason, in this case study we report a comparison between three very different European countries: Italy, Russia and Romania. At first glance, when looking for data on these three nations, it may seem that Russia is the most affected nation for both infections and deaths, Romania is one of the least affected countries even having very few vaccinated people, while Italy is almost as affected as the Russia being much smaller and having a very high percentage of vaccinated people.
+
+The overall picture after this first analysis is that Italy takes excessive measures that are not effective, Romania is healthy while not taking measures, Russia is in catastrophe.
+
+This is where EU CoVis-19 comes to our aid, let's analyze these three countries (Fig.8, Fig.9, Fig.10).
+
+The MapChart tells us that Italy has the highest percentage of cases and complete vaccinations, relative to the population, which might seem in contrast, since one might think that the vaccines do not have the due effect. But if we look at the map of Romania, we notice that the percentage of deaths in Romania and Russia is higher than in Italy.
+
+To these notions we can add those that the bar chart returns to us. The situation as of today tells us that Italy has the highest percentage of cases, but the death rates are lower, and above all we note that Italy is the one that maintains the highest stringency index, which together with the vaccinations have an influence on not saturating intensive care.
+
+Then we focus on the Table and Parallel coordinates. There are many data to consider. A particularly interesting data in this case is the population density, which in Italy is very high, which is why the infection is faster. Let's then move on to the average age, Italy appears to be the oldest country but also the one with the longest life expectancy, and as we know these are also factors that affect the disease.
+
+Finally, let's look at the PCA chart. What we see is that we have very few of Romania, this is a factor to take into account in the analysis since there could be undisclosed data that would influence the percentages of cases, deaths, and vaccinated.
+
+
 
 \section{Conclusion and Future Work}
 Over the past year, there has been worked to visualize and analyze different aspects of big data related to COVID-19. However, most existing viewers focus on visualizing temporal or spatial trends, case numbers, and mortality, but none take into account all the other possible factors that can affect a nation's pandemic picture. Plus it is very difficult for viewers to make comparisons across multiple views since almost all of them are multi-page and not one-page structured. In this project, we focus on the already existing factors of the various countries and make the comparison of the data as efficient as possible. Our key contributions include the design and development of big data visualization and visual analysis tools for epidemiological data of COVID-19. By incorporating PCAs as analytics we also provide a tool that helps to ideally understand how different country data is and how much data is being provided. We give users the flexibility to make as many comparisons as they want. The results of the visualizations can help researchers, politicians, and ordinary people to gain a better understanding of COVID-19 and thus enable them to fight the disease.
@@ -403,4 +402,20 @@ Our tool can be applied to other real-world applications, by changing the data i
 \bibitem{covid19} https://en.wikipedia.org/wiki/COVID-19
 
 \end{thebibliography}
+
+\begin{figure*}[!t]
+    \centering{\includegraphics[width=1\linewidth]{img/fig1.png}
+    \caption{Cases view} \label{Fig1}}
+   \end{figure*}
+    
+   \begin{figure*}[!t]
+    \centering{\includegraphics[width=1\linewidth]{img/fig2.png}
+    \caption{Deaths view} \label{Fig2}}
+   \end{figure*}
+   
+   \begin{figure*}[!t]
+    \centering{\includegraphics[width=1\linewidth]{img/fig3.png}
+    \caption{Vaccinations view} \label{Fig3}}
+   \end{figure*}
+   
 \end{document}
