@@ -92,9 +92,9 @@ concerned with showing the data for what it is, in other words, they perform onl
 The total number of confirmed cases and deaths in different countries (or regions/sovereignties) are usually represented by a {\em bubble map}. 
 In a bubble map, the total number of confirmed cases for each country is indicated by the radius of the bubble that represents the country. 
 While the severity of COVID-19 in many countries can be accounted for by the size of the radius of the bubbles these countries represent, 
-many bubbles overlap. The overlapping and containment of the bubbles makes it difficult to visualize the severity of the disease 
+many bubbles overlap. The overlapping and containment of the bubbles make it difficult to visualize the severity of the disease 
 in countries in dense regions.
-So a better choice, which is the one made in our project, is to represent these data through a {\em colorpleth map}, which colors the 
+So a better choice, which is the one made in our project, is to represent these data through a {\em choropleth map}, which colors the 
 map with lighter or darker shades based on the severity of the situation under analysis.
 
 Another very useful platform to find out about world covid data is the one from which we downloaded the dataset that is used in 
@@ -179,13 +179,6 @@ Finally we select only a part of the features, the ones related to vaccines, dea
 \subsection{Data management}
 Because we have to manage a very huge amount of data, we have chosen to store them inside a non-relational DataBase, making the accessibility easier.
 
-\subsection{Principal component analysis (PCA)}
-Dimensionality reduction, or dimension reduction, is the transformation of data from a high-dimensional space into a low-dimensional space so that the low-dimensional representation retains some meaningful properties of the original data, ideally close to its intrinsic dimension \cite{dimRed}.
-
-Specifically, for this task, we decided to use PCA (Principal component analysis), a linear technique for dimensionality reduction that performs a linear mapping of the data to a lower-dimensional space so that the variance of the data in the low-dimensional representation is maximized.
-Therefore, this method allows us to plot each multidimensional tuple on a bidimensional space, still maintaining all the underlying properties. 
-The algorithm is applied to all the attributes and the results are shown inside a scatterplot.
-
 \section{Technologies}
 Covid19 Visualizer is a platform and it is built as a proper web application with the following technologies:
 
@@ -223,12 +216,12 @@ On the top-right side of the navbar, the user can select among vaccination, case
 \subsection{Choropleth Map}
 A choropleth map is a type of thematic map in which a set of pre-defined areas, the countries in our case of study, is colored or patterned in proportion to a statistical variable that represents an aggregate summary of a geographic characteristic within each area \cite{map}. It is a simple view that allows us to visualize how the pandemic goes in Europe through the time. 
 
-In our visualization we use three parameters: cases (blue), deaths (red) and vaccinations (green). We use differences in shading to represent the total number of the parameter. The darker is the shading, the total number is high. There is also a legend below the map with the color scale where we can easily check the number associated with the color.
+In our visualization we use three parameters: cases (blue), deaths (red) and vaccinations (green). Instead of using the usual Covid-19 data about the total number of cases/deaths/vaccinations like many other visualizers, our color of countries is based on the percentage of these parameters compared to the population of each country. We use differences in shading to represent it. The darker is the shading, the percentage is high. There is also a legend below the map with the color scale where we can easily check the number associated with the color.
 
 Interactions:
 \begin{itemize}
  \item {\em On Click}: It will select the country so the other charts will show the data related to the selected country. The selected countries will be displayed on the left panel with their country flag, clicking on the country again will remove it from the selected countries.
- \item {\em Zoom}: when a country is selected in the table or bar chart, a zoom / projection on the selected country takes place.
+ \item {\em Zoom}: when a country is selected in the table or bar chart, a zoom/projection on the selected country takes place. Furthermore, when a zoom occurs it shows a tooltip with the total cases, total deaths, and total vaccinations for the selected period.
 \end{itemize}
 
 \begin{figure}
@@ -287,7 +280,8 @@ one additional variable can be displayed. The data are displayed as a collection
 determining the position on the horizontal axis and the value of the other variable determining the position on the vertical axis \cite{scatter}.
 
 In EU CoVis-19 PCA chart shows the two principal components (2D visualization) of the data for each selected country. This chart is very useful because showing all the data for a country it makes possible to do a comparison between 
-countries and understand well that many nations have provided very little data, and as we have known for some time now, this is a factor that must be taken into account when comparing two or more countries about the covid pandemic.
+countries and understand well that many nations have provided very little data, and as we have known for some time now, this is a factor that must be taken into account when comparing two or more countries about the covid pandemic. 
+Furthermore, the data shown in the PCA chart changes according to the selected period.
 
 PCA is also integrated as analytics, indeed it changes based on the countries selected.
 
@@ -351,23 +345,22 @@ About {\em Parallel Coordinates} and {\em TableChart} they simple aggregation, w
 In this project, we have decided not to use Principal Component analysis only as a dimensionality reduction of the dataset, and to show all the data, but also in this case we have tried to make sense of the platform by making the data shown by PCA useful for making comparisons. As already mentioned above, PCA is applied to different data based on the views chosen. This choice helps us to understand how much data we have of each country, because looking at the visualization we realize that some countries provide much more data than others (At least from the sources from which the dataset collects data). This can be a useful yardstick for not reaching hasty conclusions on the data of some countries. PCA is an analytics because the computation is done at each selection and is not precomputed. It is an expensive computation made up of several steps, which is why for us it is a complex analytics.
 
 
-\begin{figure*}[!t]
- \centering{\includegraphics[width=1\linewidth]{img/fig1.png}
- \caption{Cases view} \label{Fig1}}
-\end{figure*}
- 
-\begin{figure*}[!t]
- \centering{\includegraphics[width=1\linewidth]{img/fig2.png}
- \caption{Deaths view} \label{Fig2}}
-\end{figure*}
-
-\begin{figure*}[!t]
- \centering{\includegraphics[width=1\linewidth]{img/fig3.png}
- \caption{Vaccinations view} \label{Fig3}}
-\end{figure*}
-
-
 \section{Case of study}
+In the following paragraph, we will present a case study that will try to enclose all the main features and potential of EU CoVis-19. In this last year, we have heard conflicting opinions on the pandemic, on the data of the infections, and we have seen above all comparisons between nations to highlight whether the actions of their governments were right or not. The real problem is that in most cases when making analyzes, certain factors that are excluded and wrong are not taken into account. For this reason, in this case of study, we report a comparison between three very different European countries: Italy, Russia, and Romania. At first, glance, when looking for data on these three nations, it may seem that Russia is the most affected nation for both infections and deaths, Romania is one of the least affected countries even having very few vaccinated people, while Italy is almost as affected as Russia being much smaller and having a very high percentage of vaccinated people.
+
+The overall picture after this first analysis is that Italy takes excessive measures that are not effective, Romania is healthy while not taking measures, Russia is in catastrophe.
+
+This is where EU CoVis-19 comes to our aid, let's analyze these three countries (Fig.8, Fig.9, Fig.10).
+
+The MapChart tells us that Italy has the highest percentage of cases and complete vaccinations, relative to the population, which might seem in contrast, since one might think that the vaccines do not have the due effect. But if we look at the map of Romania, we notice that the percentage of deaths in Romania and Russia is higher than in Italy.
+
+To these notions, we can add those that the bar chart returns to us. The situation as of today tells us that Italy has the highest percentage of cases, but the death rates are lower, and above all, we note that Italy is the one that maintains the highest stringency index, which together with the vaccinations influence the saturation of intensive care.
+
+Then we focus on the Table and Parallel coordinates. There are many data to consider. A particularly interesting data, in this case, is the population density, which in Italy is very high, which is why the infection is faster. Let's then move on to the average age, Italy appears to be the oldest country but also the one with the longest life expectancy, and as we know these are also factors that affect the disease.
+
+Finally, let's look at the PCA chart. What we see is that we have very few of Romania, this is a factor to take into account in the analysis since there could be undisclosed data that would influence the percentages of cases, deaths, and vaccinations.
+
+
 
 \section{Conclusion and Future Work}
 Over the past year, there has been worked to visualize and analyze different aspects of big data related to COVID-19. However, most existing viewers focus on visualizing temporal or spatial trends, case numbers, and mortality, but none take into account all the other possible factors that can affect a nation's pandemic picture. Plus it is very difficult for viewers to make comparisons across multiple views since almost all of them are multi-page and not one-page structured. In this project, we focus on the already existing factors of the various countries and make the comparison of the data as efficient as possible. Our key contributions include the design and development of big data visualization and visual analysis tools for epidemiological data of COVID-19. By incorporating PCAs as analytics we also provide a tool that helps to ideally understand how different country data is and how much data is being provided. We give users the flexibility to make as many comparisons as they want. The results of the visualizations can help researchers, politicians, and ordinary people to gain a better understanding of COVID-19 and thus enable them to fight the disease.
@@ -403,4 +396,20 @@ Our tool can be applied to other real-world applications, by changing the data i
 \bibitem{covid19} https://en.wikipedia.org/wiki/COVID-19
 
 \end{thebibliography}
+
+\begin{figure*}[!t]
+\centering{\includegraphics[width=1\linewidth]{img/fig1.png}
+\caption{Cases view} \label{Fig1}}
+\end{figure*}
+
+\begin{figure*}[!t]
+\centering{\includegraphics[width=1\linewidth]{img/fig2.png}
+\caption{Deaths view} \label{Fig2}}
+\end{figure*}
+
+\begin{figure*}[!t]
+\centering{\includegraphics[width=1\linewidth]{img/fig3.png}
+\caption{Vaccinations view} \label{Fig3}}
+\end{figure*}
+
 \end{document}
