@@ -3,9 +3,9 @@ We live in the era of big data. For each topic, we have a huge amount of data th
 
 For the complete documents:
 
-* [Full report](./report)
+* [Full report](./report.pdf)
 
-* [Presentation slides](./slides)
+* [Presentation slides](./slides.pdf)
 
 
 # Reference dataset
