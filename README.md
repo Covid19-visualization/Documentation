@@ -45,5 +45,7 @@ Our platform is made by a Backend and a Frontend like a proper web app. The foll
 # Authors
 
 **[Valerio Coretti](https://www.linkedin.com/in/valerio-coretti-2913721a3/)**
+
 **[Fabio Caputo](https://www.linkedin.com/in/fabio-caputo-41163b171/)**
+
 **[Weihao Peng](https://www.linkedin.com/in/weihao-peng-a872b320a/)**
